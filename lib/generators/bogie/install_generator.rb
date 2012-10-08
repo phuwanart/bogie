@@ -8,21 +8,31 @@ module Bogie
 \n
 # Connect to the legacy database
 legacy:
-    adapter: mysql
-    encoding: utf8
-    reconnect: false
-    database: legacy_database_name
-    pool: 5
-    username: root
-    password:
-    socket: /tmp/mysql.sock
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: legacy_database_name
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
 LEGACY
         append_file 'config/database.yml', legacy
       end
 
       def add_legacy_base_class
         copy_file "legacy_base.rb", "app/models/legacy/legacy_base.rb"
-      end 
+      end
+
+      def update_load_path
+        say_status("updating", "load path", :red)
+
+        load_path =<<-PATH
+\n    config.autoload_paths += %W(\#\{config.root\}/app/models/legacy)
+        PATH
+        
+        inject_into_file 'config/application.rb', load_path, after: '# config.autoload_paths += %W(#{config.root}/extras)'
+      end
     end
   end
 end

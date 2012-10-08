@@ -1,11 +1,12 @@
 require "bogie/version"
+require 'ruby-progressbar'
 
 module Bogie
-  def self.migrate(name, options={})
+  def self.run(name, options={})
     unless options[:helper]
       # Grab model to migrate
-      model = name.to_s.classify
-
+      model = base(name)
+      
       query(model).each do |record|
         record.migrate
       end
@@ -19,14 +20,18 @@ module Bogie
   end
 
   def self.base(model)
-    "Legacy#{model.to_s.gsub(' ', '_').gsub('-','_').camelcase}"
+    "#{model.to_s.gsub(' ', '_').gsub('-','_').camelcase.classify}"
+  end
+
+  def self.legacy_base(model)
+    "Legacy#{base(model)}"
   end
 
   def self.construct_query(model)
     if ENV['limit'] or ENV['offset'] or ENV['where']
-      complete = base(model) + "#{where}#{limit}#{offset}"
+      complete = "#{legacy_base(model)}#{where}#{limit}#{offset}"
     else
-      complete = base(model) + ".all"
+      complete = "#{legacy_base(model)}.all"
     end
     complete
   end
