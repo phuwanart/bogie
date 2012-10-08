@@ -6,6 +6,10 @@ module Bogie
     unless options[:helper]
       # Grab model to migrate
       model = base(name)
+
+      ENV['limit'] = options[:limit].to_s unless ENV['limit']
+      ENV['offset'] = options[:offset].to_s unless ENV['offset']
+      ENV['where'] = options[:where].to_s unless ENV['where']
       
       query(model).each do |record|
         record.migrate

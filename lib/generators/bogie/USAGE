@@ -2,7 +2,7 @@ Description:
     Explain the generator
 
 Example:
-    rails generate bogie Thing
+    rails generate bogie:install
 
     This will create:
         what/will/it/create
