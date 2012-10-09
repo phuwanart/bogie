@@ -2,6 +2,10 @@ require "bogie/version"
 require 'ruby-progressbar'
 
 module Bogie
+  def self.version_string
+    "Bogie version #{Bogie::VERSION}"
+  end
+
   def self.run(name, options={})
     unless options[:helper]
       # Grab model to migrate
