@@ -1,6 +1,6 @@
 # Bogie
 
-TODO: Write a gem description
+Gem for migarte legacy data inspired by [Trucker](https://github.com/mokolabs/trucker)
 
 ## Installation
 
@@ -18,7 +18,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Install essential file and config for Legasy migrate:
+
+    $ rails generate bogie:install
+
+Create Legacy class file and task:
+
+    $ rails generate bogie:model NAME
+
+After config legacy model class file. Use `rake` to run migrate:
+
+    $ rake db:migrate:NAME
+
+## TODO
+
+* Update README and USAGE
+* Include progress bar
+* Write more test
 
 ## Contributing
 

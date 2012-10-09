@@ -1,8 +1,11 @@
-Description:
-    Explain the generator
-
-Example:
+Usage:
     rails generate bogie:install
 
-    This will create:
-        what/will/it/create
+Description:
+    Install essential file and config for Legasy migrate
+
+Usage:
+    rails generate bogie:model NAME
+
+Description:
+    Create Legacy class file and task

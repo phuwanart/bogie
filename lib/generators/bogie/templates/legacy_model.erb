@@ -13,14 +13,14 @@ class Legacy<%= file_name.classify %> < LegacyBase
 
   def map
     {
-      :field_one => self.old_field_one.squish,
-      :field_two => self.old_field_two.squish
+      field_one: self.old_field_one.squish,
+      field_two: self.old_field_two.squish
     }
   end
 
   def associate
     {
-      # :association => records.to.associate
+      # association: records.to.associate
     }
   end
 
