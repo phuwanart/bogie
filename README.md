@@ -1,6 +1,6 @@
 # Bogie
 
-Gem for migarte legacy data inspired by [Trucker](https://github.com/mokolabs/trucker)
+Gem for migrate legacy data inspired by [Trucker](https://github.com/mokolabs/trucker)
 
 ## Installation
 
@@ -22,19 +22,25 @@ Install essential file and config for Legasy migrate:
 
     $ rails generate bogie:install
 
-Create Legacy class file and task:
+Create Legacy class file and rake task with:
 
-    $ rails generate bogie:model NAME
+    $ rails generate bogie:model Post
 
-After config legacy model class file. Use `rake` to run migrate:
+Use `rake` to migrate:
 
-    $ rake db:migrate:NAME
+    $ rake db:migrate:posts
 
 ## TODO
 
 * Update README and USAGE
-* Include progress bar
 * Write more test
+
+## Changelog
+
+* 0.0.1
+    * Initialized gem
+* 0.0.2
+    * Add progress bar
 
 ## Contributing
 
@@ -43,3 +49,7 @@ After config legacy model class file. Use `rake` to run migrate:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Credits
+
+Thank you [Patrick Crowley](https://github.com/mokolabs) and [Rob Kaufman](https://github.com/orangewolf) who developed [Trucker](https://github.com/mokolabs/trucker).
