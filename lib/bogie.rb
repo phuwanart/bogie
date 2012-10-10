@@ -14,10 +14,16 @@ module Bogie
       ENV['limit'] = options[:limit].to_s unless ENV['limit']
       ENV['offset'] = options[:offset].to_s unless ENV['offset']
       ENV['where'] = options[:where].to_s unless ENV['where']
-      
-      query(model).each do |record|
-        record.migrate
+
+      records = query(model)
+      if records.size > 0
+        progressbar = ProgressBar.create(:total => records.size)
+        records.each do |record|
+          progressbar.increment
+          record.migrate
+        end
       end
+
     else
       eval options[:helper].to_s
     end
@@ -36,10 +42,10 @@ module Bogie
   end
 
   def self.construct_query(model)
-    if ENV['limit'] or ENV['offset'] or ENV['where']
-      complete = "#{legacy_base(model)}#{where}#{limit}#{offset}"
-    else
+    if ENV['limit'].blank? && ENV['offset'].blank? && ENV['where'].blank?
       complete = "#{legacy_base(model)}.all"
+    else
+      complete = "#{legacy_base(model)}#{where}#{limit}#{offset}"
     end
     complete
   end
