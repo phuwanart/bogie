@@ -4,9 +4,9 @@ include Bogie
 namespace :db do
   namespace :migrate do
   
-    desc 'Migrates <%= file_name.pluralize.downcase %>'
-    task <%= file_name.pluralize.downcase %>: :environment do
-      Bogie.run :<%= file_name.pluralize.downcase %>
+    desc 'Migrates <%= file_name.squish.gsub(' ', '_').gsub('-','_').tableize %>'
+    task <%= file_name.squish.gsub(' ', '_').gsub('-','_').tableize %>: :environment do
+      Bogie.run :<%= file_name.squish.gsub(' ', '_').gsub('-','_').tableize %>
     end
 
   end

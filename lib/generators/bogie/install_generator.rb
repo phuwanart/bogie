@@ -8,14 +8,14 @@ module Bogie
 \n
 # Connect to the legacy database
 legacy:
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
   reconnect: false
   database: legacy_database_name
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
+  host: localhost
 LEGACY
         append_file 'config/database.yml', legacy
       end
