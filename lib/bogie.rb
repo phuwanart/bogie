@@ -34,7 +34,7 @@ module Bogie
   end
 
   def self.base(model)
-    "#{model.gsub(' ', '_').gsub('-','_').singularize.classify}"
+    "#{model.to_s.gsub(' ', '_').gsub('-','_').singularize.classify}"
   end
 
   def self.legacy_base(model)
