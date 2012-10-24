@@ -1,20 +1,22 @@
 class LegacyBase < ActiveRecord::Base
   self.abstract_class = true
   establish_connection "legacy"
-  
-  def migrate
+
+  def migrate(other_map={})
+    new_map = map.merge(other_map)
+
     if @record = self.class.to_s.gsub(/Legacy/,'::').constantize.where(migrate_where).first
       # Update record at id
-      @record.update_attributes(map)
+      @record.update_attributes(new_map)
     else
       # New record
-      @record = self.class.to_s.gsub(/Legacy/,'::').constantize.new(map)
+      @record = self.class.to_s.gsub(/Legacy/,'::').constantize.new(new_map)
       @record[:id] = self.id unless dont_migrate_ids
 
       associate.each do |association, value|
         @record.send("#{association.to_s}=", value)
       end
-      
+
       begin
         @record.save!
       rescue Exception => e

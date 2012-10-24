@@ -16,8 +16,9 @@ module Bogie
       ENV['where'] = options[:where].to_s unless ENV['where']
 
       records = query(model)
-      if records.size > 0
-        progressbar = ProgressBar.create(:total => records.size)
+      records_count = records.size
+      if records_count > 0
+        progressbar = ProgressBar.create(:total => records_count)
         records.each do |record|
           progressbar.increment
           record.migrate
