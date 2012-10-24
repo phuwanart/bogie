@@ -23,6 +23,8 @@ module Bogie
           progressbar.increment
           record.migrate
         end
+
+        yield records_count if block_given?
       end
 
     else
