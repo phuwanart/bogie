@@ -31,7 +31,7 @@ LEGACY
 \n    config.autoload_paths += %W(\#\{config.root\}/app/models/legacy)
         PATH
         
-        inject_into_file 'config/application.rb', load_path, after: '# config.autoload_paths += %W(#{config.root}/extras)'
+        inject_into_file 'config/application.rb', load_path, after: 'class Application < Rails::Application'
       end
     end
   end
