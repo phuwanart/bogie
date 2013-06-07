@@ -1,4 +1,4 @@
-# Bogie
+# Bogie [![Build Status](https://travis-ci.org/neokain/bogie.png?branch=master)](https://travis-ci.org/neokain/bogie)
 
 Gem for migrate legacy data inspired by [Trucker](https://github.com/mokolabs/trucker)
 
