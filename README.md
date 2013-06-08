@@ -30,18 +30,6 @@ Use `rake` to migrate:
 
     $ rake db:migrate:posts
 
-## TODO
-
-* Update README and USAGE
-* Write more test
-
-## Changelog
-
-* 0.0.1
-    * Initialized gem
-* 0.0.2
-    * Add progress bar
-
 ## Contributing
 
 1. Fork it
