@@ -21,17 +21,7 @@ LEGACY
       end
 
       def add_legacy_base_class
-        copy_file "legacy_base.rb", "app/models/legacy/legacy_base.rb"
-      end
-
-      def update_load_path
-        say_status("updating", "load path", :red)
-
-        load_path =<<-PATH
-\n    config.autoload_paths += %W(\#\{config.root\}/app/models/legacy)
-        PATH
-        
-        inject_into_file 'config/application.rb', load_path, after: 'class Application < Rails::Application'
+        copy_file "legacy_base.rb", "app/legacy/legacy_base.rb"
       end
     end
   end

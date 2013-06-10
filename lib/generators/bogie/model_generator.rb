@@ -4,7 +4,7 @@ module Bogie
       source_root File.expand_path('../templates', __FILE__)
       
       def add_legacy_model
-        template "legacy_model.erb", "app/models/legacy/legacy_#{file_name.squish.gsub(' ', '_').gsub('-','_').singularize.classify.underscore}.rb"
+        template "legacy_model.erb", "app/legacy/legacy_#{file_name.squish.gsub(' ', '_').gsub('-','_').singularize.classify.underscore}.rb"
       end
 
       def add_legacy_task
