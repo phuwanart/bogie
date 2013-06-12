@@ -1,6 +1,15 @@
 class LegacyBase < ActiveRecord::Base
   self.abstract_class = true
-  establish_connection "legacy"
+  establish_connection({
+    adapter: "mysql2",
+    encoding: "utf8",
+    reconnect: false,
+    database: "legacy_database_name",
+    pool: 5,
+    username: "root",
+    password: "",
+    host: "localhost"
+  })
 
   def migrate(other_map={})
     new_map = map.merge(other_map)
