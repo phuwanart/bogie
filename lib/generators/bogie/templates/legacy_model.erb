@@ -1,4 +1,7 @@
-class Legacy<%= file_name.squish.gsub(' ', '_').gsub('-','_').singularize.classify %> < LegacyBase
+class Legacy<%= file_name.squish.gsub(' ', '_').gsub('-','_').singularize.classify %> < ActiveRecord::Base
+  include LegacyBase
+  establish_connection "legacy"
+  
   self.table_name = "legacy_<%= file_name.squish.gsub(' ', '_').gsub('-','_').tableize %>"
   # self.primary_key = "old_id"
   
