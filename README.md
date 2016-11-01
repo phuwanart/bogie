@@ -1,6 +1,6 @@
 # Bogie
 
-[![Gem Version](https://badge.fury.io/rb/bogie.png)](http://badge.fury.io/rb/bogie) [![Build Status](https://travis-ci.org/neokain/bogie.png?branch=master)](https://travis-ci.org/neokain/bogie) [![Dependency Status](https://gemnasium.com/neokain/bogie.png)](https://gemnasium.com/neokain/bogie) [![Coverage Status](https://coveralls.io/repos/neokain/bogie/badge.png)](https://coveralls.io/r/neokain/bogie)
+[![Gem Version](https://badge.fury.io/rb/bogie.png)](http://badge.fury.io/rb/bogie)
 
 Gem for migrate legacy data inspired by [Trucker](https://github.com/mokolabs/trucker)
 
